@@ -4,6 +4,7 @@ import About from '../views/AboutView.vue'
 import HelpView from '../views/HelpView.vue'
 import LoginView from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
+import SignUpAdmin from '../views/SignUpAsAdmin.vue'
 import AdminModelDetails from '../views/models/AdminModelDetails.vue'
 import UserModelDetails from '../views/models/UserModelDetails.vue'
 
@@ -47,6 +48,13 @@ const routes = [
 
     },
     {
+      path: '/sign-up-admin',
+      name: '/sign-up-admin',
+      meta:{isPublic:true},
+      component:SignUpAdmin
+  
+      },
+    {
       path: '/model-admin/:id',
       name: 'model-details',
       meta:{isPublic:false},
@@ -68,7 +76,7 @@ const router = createRouter({
   routes
 })
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/login', '/sign-up'];
+  const publicPages = ['/login', '/sign-up','/sign-up-admin'];
   //const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('user');
 

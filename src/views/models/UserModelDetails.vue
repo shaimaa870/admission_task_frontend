@@ -1,71 +1,83 @@
 <template>
-    <div class="submit-form mt-3 mx-auto">
-      <p class="headline"> Model Details</p>
-  <div></div>
-             <v-img
-          :width="150"
-          cover
-          class="text-center"
-          :src="staticDataUrl+'/'+modelDetails.photo+'?w=150'"
-        ></v-img>
-            <v-alert color="success " class="my-2"> <span class="text-dark">Name </span> : {{ modelDetails.name }}  </v-alert>
-                <v-alert color="success " class="my-2"> <span class="text-dark">Model </span> : {{ modelDetails.model }}  </v-alert>
-                <v-alert color="success " class="my-2"> <span class="text-dark">Description </span> : {{ modelDetails.description }}  </v-alert>
-           
+  <v-card
+    class="mx-auto my-2"
+    max-width="400"
 
-  
-  
-   
-    </div>
-  </template>
-  
-  <script>
-    import { mapState, mapActions } from 'vuex'
-    import {toRaw } from 'vue'
-    import { staticDataUrl} from '@/_helpers/auth_header';
-
-  export default {
-    name: "model-details",
-    data() {
-      return {
-        routeParam:this.$route.params.id,
-        staticDataUrl,
-        modelDetails: {
-          id:null,
-          name:"",
-          model: "",
-          description:"",
-          photo:""
-        },
-        submitted: false,
-      };
-    },
-    methods: {
-      ...mapActions('models', ['getModelById']),
-      newModel() {
-        this.submitted = false;
-        this.modelDetails = {};
-      },
-    },
-    computed: {
-      ...mapState('models',['model'])
+  >
+    <v-img
+      class="align-end text-white"
+      :src="staticDataUrl + '/' + modelDetails.photo"
       
-    },
-    watch:{
-      model:function(v){
-        console.log("state model",v);
-     this.modelDetails={...toRaw(v)?.item} 
-      }
-   },
-    created:function(){
-        this.getModelById(this.routeParam)
-      },
-    
-  };
-  </script>
+    >
+    </v-img>
+    <v-card-subtitle class="pt-4" >
+  <span class="title-color">Name: </span>  {{modelDetails.name}}
+    </v-card-subtitle>
+    <v-card-subtitle class="pt-4">
+  <span class="title-color">Model: </span>  {{modelDetails.model}}
+    </v-card-subtitle>
+
+    <v-card-text>
+
+      <div> <span class="title-color">Description:</span>{{modelDetails.description}}</div>
+
+    </v-card-text>
+  </v-card>
+ 
+</template>
   
-  <style>
-  .submit-form {
-    max-width: 300px;
-  }
-  </style>
+<script>
+import { mapState, mapActions } from 'vuex'
+import { toRaw } from 'vue'
+import { staticDataUrl } from '@/_helpers/auth_header';
+
+export default {
+  name: "model-details",
+  data() {
+    return {
+      routeParam: this.$route.params.id,
+      show:false,
+      staticDataUrl,
+      modelDetails: {
+        id: null,
+        name: "",
+        model: "",
+        description: "",
+        photo: ""
+      },
+      submitted: false,
+    };
+  },
+  methods: {
+    ...mapActions('models', ['getModelById']),
+    newModel() {
+      this.submitted = false;
+      this.modelDetails = {};
+    },
+  },
+  computed: {
+    ...mapState('models', ['model'])
+
+  },
+  watch: {
+    model: function (v) {
+      console.log("state model", v);
+      this.modelDetails = { ...toRaw(v)?.item }
+    }
+  },
+  created: function () {
+    this.getModelById(this.routeParam)
+  },
+
+};
+</script>
+  
+<style scoped>
+.title-color{
+  color: rgb(24, 207, 24);
+}
+.model-details {
+  max-width: 700px;
+  text-align: center;
+}
+</style>

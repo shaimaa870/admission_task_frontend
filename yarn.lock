@@ -7460,6 +7460,11 @@ vue3-toastify@^0.1.11:
   resolved "https://registry.npmjs.org/vue3-toastify/-/vue3-toastify-0.1.11.tgz"
   integrity sha512-xOghHidGEuzLaDp9yiCdEt53c02x16m3ai/G3vq9d7XST77YAaPk1p1D0DiTbbpYUvGQGC1SYA7e3Z9+IP3r6w==
 
+vuelidate@^0.7.7:
+  version "0.7.7"
+  resolved "https://registry.npmjs.org/vuelidate/-/vuelidate-0.7.7.tgz"
+  integrity sha512-pT/U2lDI67wkIqI4tum7cMSIfGcAMfB+Phtqh2ttdXURwvHRBJEAQ0tVbUsW9Upg83Q5QH59bnCoXI7A9JDGnA==
+
 vuetify@^3.3.7:
   version "3.3.7"
   resolved "https://registry.npmjs.org/vuetify/-/vuetify-3.3.7.tgz"

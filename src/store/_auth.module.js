@@ -15,16 +15,15 @@ const actions = {
       await  userService.login(username, password)
             .then(
                 user => {
-                  //  debugger
+                    debugger
                     commit('loginSuccess', user);
                     router.go('/');
 
                 },
                 error => {
-                    const {response}=error
-                    const{data}=response;
+                 
                     commit('loginFailure', error);
-                    toast.error(data?.errorMessage, {
+                    toast.error(error?.errorMessage, {
                         autoClose: 3000,
                       });
                 }

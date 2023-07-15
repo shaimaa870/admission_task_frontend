@@ -1,5 +1,6 @@
 import router from '@/router';
 import { modelService } from '../_services';
+import { toast } from 'vue3-toastify';
 
 const state = {
     models: {}
@@ -15,9 +16,8 @@ const actions = {
       await  modelService.getAllModels()
             .then(
                 res => {
-                    const{data}=res;
-                    const {payload}=data;
-                    commit('getAllModelsSuccess', payload)
+                 
+                    commit('getAllModelsSuccess', res?.data)
             },
                 error =>{ 
                     commit('getAllModelsFailure', error)
@@ -30,9 +30,8 @@ const actions = {
       await  modelService.getModelById(id)
             .then(
                 res => {
-                    const{data}=res;
-                    const {payload}=data;
-                    commit('getModelByIdSuccess', payload)
+                  
+                    commit('getModelByIdSuccess', res?.data)
             },
                 error =>{ 
                     commit('getModelByIdFailure', error)
@@ -46,14 +45,13 @@ const actions = {
       await  modelService.CreateModel(model)
             .then(
                 res => {
-                    const{data}=res;
-                    const {payload}=data;
-                    console.log("payload",payload);
-                    commit('CreateModelSuccess', payload)
+                 
+                    commit('CreateModelSuccess', res?.data)
                     router.push('/')
             },
                 error =>{ 
                     commit('CreateModelFailure', error)
+                    toast.error('there is an error, plz try again')
                 }
             );
     },
@@ -63,13 +61,14 @@ const actions = {
       await  modelService.updateModel(model)
             .then(
                 res => {
-                    const{data}=res;
-                    const {payload}=data;
-                    commit('updateModelSuccess', payload)
+                   
+                    commit('updateModelSuccess', res?.data)
                     router.push("/")
             },
                 error =>{ 
                     commit('updateModelFailure', error)
+                    toast.error('there is an error, plz try again')
+
                 }
             );
     },

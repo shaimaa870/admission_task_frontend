@@ -8,5 +8,5 @@ export function authHeader() {
         return {};
     }
 }
-export const url="https://localhost:2021/api";
-export const staticDataUrl="https://localhost:2021";
+export const url="https://localhost:7292/api";
+export const staticDataUrl="https://localhost:7292/images";

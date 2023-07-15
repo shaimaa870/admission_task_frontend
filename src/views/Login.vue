@@ -15,7 +15,7 @@
                      <div v-show="submitted && !username" class="invalid-feedback">Username is required</div>
                      <input v-model="password" type="password" class="form-control" placeholder="Password" required>
                      <div v-show="submitted && !password" class="invalid-feedback">Password is required</div>
-                     <input type="submit" :disabled="submitted" class="btn btn-primary">
+                     <input type="submit" :disabled="submitted" class="btn btn-primary text-light">
                      <p>Don't have an account? <a href="sign-up" >Sign up here</a>
                      </p>
                   </form>

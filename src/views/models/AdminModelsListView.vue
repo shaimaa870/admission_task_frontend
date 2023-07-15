@@ -37,8 +37,8 @@
         </v-toolbar>
       </template>
   <template v-slot:item.actions="{ item }">
-    <span class="material-icons lue" @click="editModel(item.raw.id)">edit</span>
-    <span class="material-icons lue"  @click="removeElement(item.raw.id)">delete</span>
+    <span class="material-icons text-success" @click="editModel(item.raw.id)">edit</span>
+    <span class="material-icons text-danger"  @click="removeElement(item.raw.id)">delete</span>
 
 
   

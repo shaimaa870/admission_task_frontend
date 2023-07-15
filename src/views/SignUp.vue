@@ -37,7 +37,7 @@
                                             Conditions</a>.</label>
                                 </div> -->
                                 <div class="form-group">
-                                    <button class="btn btn-primary" id="register" type="submit"
+                                    <button class="btn btn-primary text-light" id="register" type="submit"
                                     :disabled="submitted"
                                         name="registerSubmit">Register</button>
                                 </div>
@@ -80,6 +80,8 @@ export default {
          e.preventDefault()
             this.submitted = true;
             this.register({...this.user,phoneNumber:this.user?.username});
+            this.submitted = false;
+
         }
     }
 };

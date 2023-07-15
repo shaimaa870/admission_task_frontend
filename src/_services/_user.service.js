@@ -16,16 +16,15 @@ async function login(username, password) {
     return await axios.post(`${url}/auth/login`, { username, password })
        // .then(handleResponse)
         .then(res => {
-            const {data}=res;
-            const{payload}=data;
-            if (payload.token) {
-                localStorage.setItem('user', JSON.stringify(payload));
-              let data=  VueJwtDecode.decode(payload?.token)
-                localStorage.setItem('userData', JSON.stringify(data));
+           debugger
+            if (res?.data.token) {
+                localStorage.setItem('user', JSON.stringify(res?.data));
+              let userData=  VueJwtDecode.decode(res?.data.token)
+                localStorage.setItem('userData', JSON.stringify(userData));
 
             }
 
-            return payload;
+            return res;
         })
 
 }
@@ -38,7 +37,7 @@ function logout() {
 }
 
 async function register(user) {
-    return await axios.post(`${url}/user-management/users`, user)
+    return await axios.post(`${url}/auth/register`, user)
     .then(res => {
     debugger
         return res;
